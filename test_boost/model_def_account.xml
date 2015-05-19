@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model>
+    <default_account>
+        <username>1</username>
+        <password>1</password>
+        <list_name>AVTECH, Avigilon, Basler, COMPRO, Dahua, Grandstream, IPUX, Pelco Sarix, Pixord, QNAP, Sanyo, Sony, Stardot, Trendnet, VARCON</list_name>
+    </default_account>
+    <default_account>
+        <username>2</username>
+        <password>2</password>
+        <list_name>DVTel, Edimax, Honeywell, Sentry360</list_name>
+    </default_account>
+    <default_account>
+        <username>3</username>
+        <password>3</password>
+        <list_name>Samsung Electronics, Samsung Techwin</list_name>
+    </default_account>
+    <default_account>
+        <username>4</username>
+        <password>4</password>
+        <list_name>Axis, Blueeyes</list_name>
+    </default_account>
+    <default_account>
+        <username>5</username>
+        <password></password>
+        <list_name>Vivotek</list_name>
+    </default_account>
+</model>

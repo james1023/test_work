@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "msvc", "..\test_boost\msvc\msvc.vcxproj", "{7F620B74-AA62-4AE1-8326-B9EFA39DC275}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "boost_lib", "..\boost_lib\msvc\boost_lib.vcxproj", "{481BB3A7-448D-4951-8A69-617E1B65D323}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7F620B74-AA62-4AE1-8326-B9EFA39DC275}.Debug|Win32.ActiveCfg = Debug|Win32
+		{7F620B74-AA62-4AE1-8326-B9EFA39DC275}.Debug|Win32.Build.0 = Debug|Win32
+		{7F620B74-AA62-4AE1-8326-B9EFA39DC275}.Release|Win32.ActiveCfg = Release|Win32
+		{7F620B74-AA62-4AE1-8326-B9EFA39DC275}.Release|Win32.Build.0 = Release|Win32
+		{481BB3A7-448D-4951-8A69-617E1B65D323}.Debug|Win32.ActiveCfg = Debug|Win32
+		{481BB3A7-448D-4951-8A69-617E1B65D323}.Debug|Win32.Build.0 = Debug|Win32
+		{481BB3A7-448D-4951-8A69-617E1B65D323}.Release|Win32.ActiveCfg = Release|Win32
+		{481BB3A7-448D-4951-8A69-617E1B65D323}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
