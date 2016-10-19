@@ -75,24 +75,12 @@ void test_bind()
 
 void test_xml()
 {
-    struct _def_account
-    {
-        string username;
-        string password;
-    };
-
-    struct _model_def_account
-    {
-        struct def_account;
-        string model_name;
-    };
-
-    struct _model_def_account model_def_account;
     boost::property_tree::ptree head_tree, model_child;
     stringstream ss;
 
     try {
-        boost::property_tree::xml_parser::read_xml("../model_def_account.xml", head_tree);
+        boost::property_tree::xml_parser::read_xml("../model_def_account.xml", head_tree, 
+			boost::property_tree::xml_parser::no_comments | boost::property_tree::xml_parser::trim_whitespace);
     }
     catch(boost::exception const&  ex) {
         std::cout << "read_xml error." << std::endl;
@@ -111,6 +99,208 @@ void test_xml()
     }
 }
 
+int OhMetadataParser::XmlWriteCgi(const boost::property_tree::ptree &pt, std::list<std::string> &hstr_list, std::stringstream &out)
+{
+	int err = TRUE;
+
+	BOOST_FOREACH(const boost::property_tree::ptree::value_type &v, pt) {
+	
+		hstr_list.push_back(v.first);
+
+		if (v.second.empty()) {
+			list<string>::iterator hstr_it = hstr_list.begin();
+			while (hstr_it != hstr_list.end()) {
+				if (hstr_it != --hstr_list.end())
+					out << *hstr_it << ".";
+				else
+					out << *hstr_it << "=" << v.second.data() << "\n";
+
+				hstr_it++;
+			}
+		}
+		else {
+			err = XmlWriteCgi(v.second, hstr_list, out);
+			if (err != TRUE) {
+				break;
+			}
+
+			if (v.second.data().length() > 0) {
+				list<string>::iterator hstr_it = hstr_list.begin();
+				while (hstr_it != hstr_list.end()) {
+					if (hstr_it != --hstr_list.end())
+						out << *hstr_it << ".";
+					else
+						out << *hstr_it << "=" << v.second.data() << "\n";
+
+					hstr_it++;
+				}
+			}
+		}
+
+		hstr_list.pop_back();
+	}
+
+	return err;
+}
+
+int OhMetadataParser::XmlWriteCgi(std::stringstream &in, std::stringstream &out)
+{
+	int err = TRUE;
+
+	boost::property_tree::ptree pt;
+	std::stringstream ss;
+	std::list<string> hstr_list;
+
+	hstr_list.clear();
+
+	do 
+	{
+		try {
+			boost::property_tree::xml_parser::read_xml(
+				in, pt,
+				boost::property_tree::xml_parser::no_comments | boost::property_tree::xml_parser::trim_whitespace);
+		}
+		catch (boost::exception const &ex) {
+			std::cout << "read_xml error." << std::endl;
+			err = FALSE;
+			return err;
+		}
+
+		err = XmlWriteCgi(pt, hstr_list, out);
+	} while (0);
+
+	return err;
+}
+
+int OhMetadataParser::CgiWriteXml(const std::stringstream &in, std::stringstream &out)
+{
+	int err = TRUE;
+
+	boost::property_tree::ptree pt;
+	std::string in_str;
+	std::map<string, string> keyvalue;
+
+	do 
+	{
+	    in_str = in.str();
+		boost::char_separator<char> sep("\n");
+		boost::tokenizer<boost::char_separator<char> > tok(in_str, sep);
+
+		vector<std::string> tok1;
+
+		for (BOOST_AUTO(pos, tok.begin()); pos != tok.end(); pos++) {
+			boost::split(tok1, *pos, boost::is_any_of("="), boost::token_compress_on);
+			
+			boost::optional<std::string> v = pt.get_optional<std::string>(tok1[0]);
+			if (v) {
+				pt.add(tok1[0], tok1[1]);
+			}
+			else {
+				pt.put(tok1[0], tok1[1]);
+			}
+		}
+
+		boost::property_tree::xml_parser::write_xml(out, pt);
+
+		/*vector<std::string> rs;
+		boost::split(rs, in.str(), boost::is_any_of("\n"), boost::token_compress_on);
+		for (vector<std::string>::iterator it = rs.begin(); it != rs.end(); ++it) {
+		boost::split(rs, in.str(), boost::is_any_of("="), boost::token_compress_on);
+		cout << *it << endl;
+		}*/
+
+		/*vector<pair<string::const_iterator, string::const_iterator> > tokens;
+		boost::split(tokens, in.str(), boost::is_any_of("="));
+		for (auto beg = tokens.begin(); beg != tokens.end(); ++beg) {
+		cout << string(beg->first, beg->second) << endl;
+		}*/
+
+		/*for (const std::string &tag : boost::split(in.str(), "\n")) {
+		auto key_val = boost::split(tag, "=");
+		cout << key_val[0] << ", " << key_val[1];
+		}*/
+		
+		/*std::string s = in.str();
+		boost::char_separator<char> sep("\n");
+		boost::tokenizer<boost::char_separator<char> > tokens(s, sep);
+		for (boost::tokenizer<boost::char_separator<char> >::iterator tok_iter = tokens.begin(); tok_iter != tokens.end(); ++tok_iter)
+			std::cout << "<" << *tok_iter << "> ";
+		std::cout << "\n";*/
+
+	} while (0);
+
+	return err;
+}
+
+void test_xml2()
+{
+	int err = TRUE;
+
+	std::stringstream in_ss;
+	std::stringstream out_ss;
+
+	std::string xml_str =
+		"<StreamingChannel>"
+		"<name>james</name>"
+		"<id opt=\"1,2\">1</id>"
+		"<channelName min=\"0\" max=\"32\">IPdome</channelName>"
+		"<enabled opt=\"true\">true</enabled>"
+		"<Transport>"
+		"<rtspPortNo min=\"0\" max=\"65535\" def=\"554\">554</rtspPortNo>"
+		"<maxPacketSize opt=\"1000\">1000</maxPacketSize>"
+		"<sourcePortNo min=\"0\" max=\"65535\" def=\"8200\">8200</sourcePortNo>"
+		"<ControlProtocolList>"
+		"<ControlProtocol>"
+		"<streamingTransport opt=\"RTSP\">RTSP</streamingTransport>"
+		"</ControlProtocol>"
+		"</ControlProtocolList>"
+		"<Unicast>"
+		"<enabled opt=\"true\">true</enabled>"
+		"</Unicast>"
+		"<Multicast>"
+		"<enabled opt=\"true\" def=\"true\">true</enabled>"
+		"<destIPAddress min=\"8\" max=\"16\">0.0.0.0</destIPAddress>"
+		"<destPortNo min=\"0\" max=\"65535\" def=\"8600\">8200</destPortNo>"
+		"</Multicast>"
+		"</Transport>"
+		"<Video>"
+		"<enabled opt=\"true\">true</enabled>"
+		"<videoInputChannelID opt=\"1\">1</videoInputChannelID>"
+		"<videoCodecType opt=\"H.264\">H.264</videoCodecType>"
+		"<videoScanType opt=\"progressive\">progressive</videoScanType>"
+		"<videoResolutionWidth opt=\"1280*720,1920*1080\">1920</videoResolutionWidth>"
+		"<videoResolutionHeight opt=\"1280*720,1920*1080\">1080</videoResolutionHeight>"
+		"<videoQualityControlType opt=\"CBR,VBR\">VBR</videoQualityControlType>"
+		"<constantBitRate min=\"32\" max=\"12288\">4096</constantBitRate>"
+		"<fixedQuality opt=\"1,20,40,60,80,100\">80</fixedQuality>"
+		"<maxFrameRate opt=\"3000,2500,2200,2000,1800,1600,1500,1200,1000,800,600,400,200,100,50,25,12,6\">3000</maxFrameRate>"
+		"<keyFrameInterval min=\"2\" max=\"250\">30</keyFrameInterval>"
+		"<BPFrameInterval opt=\"0,1,2\">0</BPFrameInterval>"
+		"<snapShotImageType opt=\"JPEG\" def=\"JPEG\">JPEG</snapShotImageType>"
+		"<SVC>"
+		"<enabled opt=\"ture,false\">false</enabled>"
+		"</SVC>"
+		"</Video>"
+		"<Audio>"
+		"<enabled opt=\"true,false\">true</enabled>"
+		"<audioInputChannelID opt=\"11\">11</audioInputChannelID>"
+		"<audioCompressionType opt=\"G.722.1,G.711ulaw,G.711alaw,MP2L2,G.726,AAC\">G.711alaw</audioCompressionType>"
+		"</Audio>"
+		"</StreamingChannel>";
+
+	in_ss << xml_str;
+
+	OhMetadataParser oh_meta_parser;
+	
+	err = oh_meta_parser.XmlWriteCgi(in_ss, out_ss);
+	if (err != TRUE) 
+		return;
+
+	err = oh_meta_parser.CgiWriteXml(out_ss, in_ss);
+	if (err != TRUE)
+		return;
+}
+
 int main(void) {
 
 	printf("ready go to test boost!. \n");
@@ -118,6 +308,8 @@ int main(void) {
     test_thread();
 	
     test_xml();
+
+	test_xml2();
 
     system("PAUSE");
 

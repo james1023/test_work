@@ -19,6 +19,9 @@
     <Filter Include="原始程式檔\system">
       <UniqueIdentifier>{1f22452f-5199-4086-8c83-5498b174f672}</UniqueIdentifier>
     </Filter>
+    <Filter Include="原始程式檔\regex">
+      <UniqueIdentifier>{38b92388-9237-43ed-ae02-b84b0d79a76f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="ReadMe.txt" />
@@ -36,5 +39,61 @@
     <ClCompile Include="..\boost_1_55_0-windows\boost.cpp">
       <Filter>原始程式檔</Filter>
     </ClCompile>
+    <ClCompile Include="..\boost_1_55_0-windows\libs\regex\src\cpp_regex_traits.cpp">
+      <Filter>原始程式檔\regex</Filter>
+    </ClCompile>
+    <ClCompile Include="..\boost_1_55_0-windows\libs\regex\src\w32_regex_traits.cpp">
+      <Filter>原始程式檔\regex</Filter>
+    </ClCompile>
+    <ClCompile Include="..\boost_1_55_0-windows\libs\regex\src\regex.cpp">
+      <Filter>原始程式檔\regex</Filter>
+    </ClCompile>
+    <ClCompile Include="..\boost_1_55_0-windows\libs\regex\src\posix_api.cpp">
+      <Filter>原始程式檔\regex</Filter>
+    </ClCompile>
+    <ClCompile Include="..\boost_1_55_0-windows\libs\regex\src\wide_posix_api.cpp">
+      <Filter>原始程式檔\regex</Filter>
+    </ClCompile>
+    <ClCompile Include="..\boost_1_55_0-windows\libs\regex\src\c_regex_traits.cpp">
+      <Filter>原始程式檔\regex</Filter>
+    </ClCompile>
+    <ClCompile Include="..\boost_1_55_0-windows\libs\regex\src\cregex.cpp">
+      <Filter>原始程式檔\regex</Filter>
+    </ClCompile>
+    <ClCompile Include="..\boost_1_55_0-windows\libs\regex\src\fileiter.cpp">
+      <Filter>原始程式檔\regex</Filter>
+    </ClCompile>
+    <ClCompile Include="..\boost_1_55_0-windows\libs\regex\src\icu.cpp">
+      <Filter>原始程式檔\regex</Filter>
+    </ClCompile>
+    <ClCompile Include="..\boost_1_55_0-windows\libs\regex\src\instances.cpp">
+      <Filter>原始程式檔\regex</Filter>
+    </ClCompile>
+    <ClCompile Include="..\boost_1_55_0-windows\libs\regex\src\regex_debug.cpp">
+      <Filter>原始程式檔\regex</Filter>
+    </ClCompile>
+    <ClCompile Include="..\boost_1_55_0-windows\libs\regex\src\regex_raw_buffer.cpp">
+      <Filter>原始程式檔\regex</Filter>
+    </ClCompile>
+    <ClCompile Include="..\boost_1_55_0-windows\libs\regex\src\regex_traits_defaults.cpp">
+      <Filter>原始程式檔\regex</Filter>
+    </ClCompile>
+    <ClCompile Include="..\boost_1_55_0-windows\libs\regex\src\static_mutex.cpp">
+      <Filter>原始程式檔\regex</Filter>
+    </ClCompile>
+    <ClCompile Include="..\boost_1_55_0-windows\libs\regex\src\usinstances.cpp">
+      <Filter>原始程式檔\regex</Filter>
+    </ClCompile>
+    <ClCompile Include="..\boost_1_55_0-windows\libs\regex\src\wc_regex_traits.cpp">
+      <Filter>原始程式檔\regex</Filter>
+    </ClCompile>
+    <ClCompile Include="..\boost_1_55_0-windows\libs\regex\src\winstances.cpp">
+      <Filter>原始程式檔\regex</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\boost_1_55_0-windows\libs\regex\src\internals.hpp">
+      <Filter>原始程式檔\regex</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

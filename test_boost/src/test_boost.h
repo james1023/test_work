@@ -12,6 +12,8 @@
 #include <boost/function.hpp>
 #include <boost/date_time/posix_time/posix_time.hpp>
 
+#include <boost/typeof/typeof.hpp> 
+#include <boost/optional/optional.hpp>
 #include <boost/property_tree/ptree.hpp>
 #include <boost/property_tree/xml_parser.hpp>
 
@@ -21,6 +23,14 @@
 #include <boost/thread/thread.hpp>
 #include <boost/thread/mutex.hpp>
 #include <boost/asio.hpp>
+
+//#include <boost/regex.hpp>
+
+//#include <boost/algorithm/string/regex.hpp>
+#include <boost/algorithm/string/classification.hpp>
+#include <boost/algorithm/string/split.hpp>
+#include <boost/tokenizer.hpp>
+#include <boost/xpressive/xpressive_dynamic.hpp>
 
 class TestObj: boost::noncopyable
 {
@@ -66,4 +76,17 @@ public:
         
         return in;
     }
+};
+
+class OhMetadataParser: boost::noncopyable
+{
+private:
+	int XmlWriteCgi(const boost::property_tree::ptree &pt, std::list<std::string> &hstr_list, std::stringstream &out);
+
+public:
+	OhMetadataParser() {};
+	virtual ~OhMetadataParser() {};
+
+	int XmlWriteCgi(std::stringstream &in, std::stringstream &out);
+	int CgiWriteXml(const std::stringstream &in, std::stringstream &out);
 };
