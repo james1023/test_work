@@ -144,7 +144,9 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="interview_cpp.cpp" />
+    <ClCompile Include="8_bsort_1.cpp" />
+    <ClCompile Include="main_data_struct.cpp" />
+    <ClCompile Include="main_interview.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
