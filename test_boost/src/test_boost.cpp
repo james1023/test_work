@@ -2,7 +2,7 @@
 
 using namespace std;
 
-// test git step 2.
+// test git step 3.
 
 void TestObj::runThread1()
 {
