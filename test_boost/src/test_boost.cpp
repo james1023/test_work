@@ -231,6 +231,8 @@ int OhMetadataParser::CgiWriteXml(const std::stringstream &in, std::stringstream
 	return err;
 }
 
+// fix 1.
+
 void test_xml2()
 {
 	int err = TRUE;
