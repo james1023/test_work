@@ -9,8 +9,6 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "boost_lib", "..\boost_lib\m
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "interview_cpp", "..\interview_cpp\interview_cpp.vcxproj", "{8A33F386-7DA7-43D5-A41B-CF8300881195}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "leet_code", "..\leet_code\leet_code.vcxproj", "{0F0402A6-F554-4DF2-B7D9-6625FAAD98F0}"
-EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "data_struct", "..\data_struct\data_struct.vcxproj", "{AEA44534-F51C-4E17-A5C8-B1D9A0427244}"
 EndProject
 Global
@@ -41,14 +39,6 @@ Global
 		{8A33F386-7DA7-43D5-A41B-CF8300881195}.Release|Win32.Build.0 = Release|Win32
 		{8A33F386-7DA7-43D5-A41B-CF8300881195}.Release|x64.ActiveCfg = Release|x64
 		{8A33F386-7DA7-43D5-A41B-CF8300881195}.Release|x64.Build.0 = Release|x64
-		{0F0402A6-F554-4DF2-B7D9-6625FAAD98F0}.Debug|Win32.ActiveCfg = Debug|Win32
-		{0F0402A6-F554-4DF2-B7D9-6625FAAD98F0}.Debug|Win32.Build.0 = Debug|Win32
-		{0F0402A6-F554-4DF2-B7D9-6625FAAD98F0}.Debug|x64.ActiveCfg = Debug|x64
-		{0F0402A6-F554-4DF2-B7D9-6625FAAD98F0}.Debug|x64.Build.0 = Debug|x64
-		{0F0402A6-F554-4DF2-B7D9-6625FAAD98F0}.Release|Win32.ActiveCfg = Release|Win32
-		{0F0402A6-F554-4DF2-B7D9-6625FAAD98F0}.Release|Win32.Build.0 = Release|Win32
-		{0F0402A6-F554-4DF2-B7D9-6625FAAD98F0}.Release|x64.ActiveCfg = Release|x64
-		{0F0402A6-F554-4DF2-B7D9-6625FAAD98F0}.Release|x64.Build.0 = Release|x64
 		{AEA44534-F51C-4E17-A5C8-B1D9A0427244}.Debug|Win32.ActiveCfg = Debug|Win32
 		{AEA44534-F51C-4E17-A5C8-B1D9A0427244}.Debug|Win32.Build.0 = Debug|Win32
 		{AEA44534-F51C-4E17-A5C8-B1D9A0427244}.Debug|x64.ActiveCfg = Debug|x64
