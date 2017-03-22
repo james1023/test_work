@@ -300,6 +300,8 @@ void test_xml2()
 		return;
 }
 
+// step 4
+
 int main(void) {
 
 	printf("ready go to test boost!. \n");
