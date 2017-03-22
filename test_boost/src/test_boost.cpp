@@ -2,9 +2,6 @@
 
 using namespace std;
 
-// test git step 2.
-// test git step 2-1.
-
 void TestObj::runThread1()
 {
 	boost::this_thread::sleep(boost::posix_time::seconds(1));
