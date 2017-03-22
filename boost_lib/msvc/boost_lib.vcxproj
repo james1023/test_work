@@ -52,7 +52,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;BOOST_ALL_NO_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\boost_1_55_0-windows</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\james\work\project\boost_1_55_0</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -80,7 +80,9 @@
     <None Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\boost_1_55_0-windows\boost.cpp" />
+    <ClCompile Include="..\..\..\..\..\..\work\project\boost_1_55_0\libs\system\src\error_code.cpp" />
+    <ClCompile Include="..\..\..\..\..\..\work\project\boost_1_55_0\libs\thread\src\future.cpp" />
+    <ClCompile Include="..\..\..\..\..\..\work\project\boost_1_55_0\libs\thread\src\win32\thread.cpp" />
     <ClCompile Include="..\boost_1_55_0-windows\libs\regex\src\cpp_regex_traits.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
@@ -132,9 +134,7 @@
     <ClCompile Include="..\boost_1_55_0-windows\libs\regex\src\winstances.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="..\boost_1_55_0-windows\libs\system\src\error_code.cpp" />
-    <ClCompile Include="..\boost_1_55_0-windows\libs\thread\src\future.cpp" />
-    <ClCompile Include="..\boost_1_55_0-windows\libs\thread\src\win32\thread.cpp" />
+    <ClCompile Include="boost.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\boost_1_55_0-windows\libs\regex\src\internals.hpp">

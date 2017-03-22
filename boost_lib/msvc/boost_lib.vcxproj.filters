@@ -27,18 +27,6 @@
     <None Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\boost_1_55_0-windows\libs\system\src\error_code.cpp">
-      <Filter>原始程式檔\system</Filter>
-    </ClCompile>
-    <ClCompile Include="..\boost_1_55_0-windows\libs\thread\src\future.cpp">
-      <Filter>原始程式檔\thread</Filter>
-    </ClCompile>
-    <ClCompile Include="..\boost_1_55_0-windows\libs\thread\src\win32\thread.cpp">
-      <Filter>原始程式檔\thread</Filter>
-    </ClCompile>
-    <ClCompile Include="..\boost_1_55_0-windows\boost.cpp">
-      <Filter>原始程式檔</Filter>
-    </ClCompile>
     <ClCompile Include="..\boost_1_55_0-windows\libs\regex\src\cpp_regex_traits.cpp">
       <Filter>原始程式檔\regex</Filter>
     </ClCompile>
@@ -89,6 +77,18 @@
     </ClCompile>
     <ClCompile Include="..\boost_1_55_0-windows\libs\regex\src\winstances.cpp">
       <Filter>原始程式檔\regex</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\work\project\boost_1_55_0\libs\system\src\error_code.cpp">
+      <Filter>原始程式檔\system</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\work\project\boost_1_55_0\libs\thread\src\future.cpp">
+      <Filter>原始程式檔\thread</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\work\project\boost_1_55_0\libs\thread\src\win32\thread.cpp">
+      <Filter>原始程式檔\thread</Filter>
+    </ClCompile>
+    <ClCompile Include="boost.cpp">
+      <Filter>原始程式檔</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
