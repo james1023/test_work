@@ -45,6 +45,44 @@ TEST(itobs, test2)
 	cout << n << "=" << s << endl;
 }
 
+/*
+1. bit sequence
+給你一個8-bit的整數數列，要你找出這串數列的連續最長的1bit的長度和他的起始位置
+(ps. 255=11111111就是8個連續的1bit, 119=01110111有兩組連續3個1bit)
+*/
+int max_onebits(int N)
+{
+	int ones = 0;
+	int max_gap = 0;
+
+	while (N > 0) {
+		if ((N & 1) == 1) {
+			ones++;
+			if (max_gap < ones) {
+				max_gap = ones;
+			}
+		}
+		else {
+			ones = 0;
+		}
+
+		N = N >> 1;
+	}
+
+	return max_gap;
+}
+
+TEST(max_onebits, test1)
+{
+	std::cout << "9=>" << max_onebits(9) << std::endl;
+	EXPECT_EQ(1, max_onebits(9));
+	
+	std::cout << "255=>" << max_onebits(255) << std::endl;
+	EXPECT_EQ(8, max_onebits(255));
+
+	std::cout << "119=>" << max_onebits(119) << std::endl;
+	EXPECT_EQ(3, max_onebits(119));
+}
 
 int main(int argc, char *argv[])
 {
